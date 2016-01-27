@@ -1,0 +1,21 @@
+<!-- <node pkg="tf" type="static_transform_publisher" name="base_link2map" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link map 102"/> --!>
+<!-- <node pkg="tf" type="static_transform_publisher" name="riegl2map" args="0.0 0.0 0.0 0.0 0.0 0.0 riegl map 103"/> --!>
+<!-- <node pkg="tf" type="static_transform_publisher" name="xsens2map" args="0.0 0.0 0.0 0.0 0.0 0.0 xsens map 104"/> --!>
+
+<node pkg="tf" type="static_transform_publisher" name="odom2map" args="0.0 0.0 0.0 0.0 0.0 0.0 odom map 100 "/>
+
+
+
+<node pkg="tf" type="static_transform_publisher" name="base_link2map" args="0.0 0.0 0.0 0.0 0.0 0.0 map base_link 100"/>
+<node pkg="tf" type="static_transform_publisher" name="map2odom_combined2map" args="0.0 0.0 0.0 0.0 0.0 0.0 map odom_combined 100"/>
+<node pkg="tf" type="static_transform_publisher" name="map2front_laser" args="0.0 0.0 0.0 0.0 0.0 0.0 map front_laser 100"/>
+
+
+
+<node pkg="tf" type="static_transform_publisher" name="base_link2map" args="20.0 20.0 0.0 0.0 0.0 0.0 base_link map 100"/>
+<node pkg="tf" type="static_transform_publisher" name="map2odom_combined2map" args="0.0 0.0 0.0 0.0 0.0 0.0 odom_combined map 100"/>
+<node pkg="tf" type="static_transform_publisher" name="map2front_laser" args="0.0 0.0 0.0 0.0 0.0 0.0 front_laser map 100"/>
+
+<node pkg="tf" type="static_transform_publisher" name="base_link2map1" args="0.0 0.0 0.0 0.0 0.0 0.0 map base_link 100"/>
+<node pkg="tf" type="static_transform_publisher" name="map2odom_combined2map1" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link odom_combined 100"/>
+<node pkg="tf" type="static_transform_publisher" name="map2front_laser1" args="0.0 0.0 0.0 0.0 0.0 0.0 map front_laser 100"/>

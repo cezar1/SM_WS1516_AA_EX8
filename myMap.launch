@@ -1,0 +1,19 @@
+<launch>
+
+<rosparam>
+       use_sim_time: true
+</rosparam>
+
+<node pkg="tf" type="static_transform_publisher" name="base_link2map1" args="0.0 0.0 0.0 0.0 0.0 0.0 map base_link 100"/>
+<node pkg="tf" type="static_transform_publisher" name="base_link2map2" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link odom_combined 100"/>
+
+
+<!-- Run the map server (section inside the launch file) -->
+<node name="map_server" pkg="map_server" type="map_server" args="/home/cezar/mySW/SM_WS1516_AA_EX8/myMap.yaml"/>
+<param name="frame_id" value="base_link"/>
+<!--- Run AMCL -->
+<include file="/home/cezar/mySW/SM_WS1516_AA_EX8/myAMCL.launch"/>
+</launch>
+
+
+
