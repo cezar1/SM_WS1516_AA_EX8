@@ -13,12 +13,6 @@
 
 <include file="/home/cezar/mySW/SM_WS1516_AA_EX8/myAMCL.launch"/>
 
-<node name="laserscan_cloner" pkg="myrobot_tf_broadcaster" type="laserscan_cloner"/>
-<node name="odom_listener" pkg="myrobot_tf_broadcaster" type="odom_listener"/>
-
-<param name="frame_id" value="base_link"/>
-<!--- Run AMCL -->
-
 </launch>
 
 
