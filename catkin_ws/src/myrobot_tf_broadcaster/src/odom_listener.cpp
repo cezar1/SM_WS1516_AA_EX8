@@ -4,6 +4,7 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include <sstream>
+#include <geometry_msgs/PoseWithCovarianceStamped.h>
 
 /**
  * This tutorial demonstrates simple receipt of position and speed of the Evarobot over the ROS system.
@@ -13,6 +14,11 @@
  * Callback function executes when new topic data comes.
  * Task of the callback function is to print data to screen.
  */
+#define ODO_TRANSLATION_SCALING 0.75
+#define ODO_ANGLE_SCALING 1
+
+# define M_PI       3.14159265358979323846  /* pi */
+
 double myDeltaX,myDeltaY,myDeltaZ,myDeltaTheta;
 double myLastX,myLastY,myLastZ,myLastTheta;
 bool myCreatedOdo;
@@ -24,8 +30,29 @@ void mySendTransform(const char* vSource,const char* vDestination, geometry_msgs
 	vTransform.child_frame_id = vDestination;
 	broadcaster.sendTransform(vTransform);
 	ROS_INFO("Broadcasting this as TF from frame ID: [%s] to frame ID: [%s]",vSource, vDestination);
+
+
 }
 
+void chatterCallback2(const geometry_msgs::PoseWithCovarianceStamped & pose)
+
+{
+	//fprintf(stderr,"Received pose");
+	//fprintf(stderr,"Received pose position %f, %f, %f\n", pose.pose.pose.position.x,pose.pose.pose.position.y, pose.pose.pose.position.z);
+	//fprintf(stderr,"Received pose orientation %f, %f, %f\n", pose.pose.pose.orientation.x,pose.pose.pose.orientation.y, pose.pose.pose.orientation.z);
+
+	ros::Time current_time, last_time;
+	current_time = ros::Time::now();
+	geometry_msgs::TransformStamped odom_trans;
+	geometry_msgs::Quaternion odom_quat;
+	odom_trans.header.stamp = current_time;
+	odom_trans.transform.translation.x = 0;
+  odom_trans.transform.translation.y = 0;
+  odom_trans.transform.translation.z = 0;
+	odom_quat = tf::createQuaternionMsgFromYaw((pose.pose.pose.orientation.z)*ODO_ANGLE_SCALING);
+  odom_trans.transform.rotation = odom_quat;
+	mySendTransform("odom_combined","base_link",odom_trans);
+}
 void chatterCallback(const nav_msgs::Odometry::ConstPtr& msg)
 {
   ROS_INFO("Seq: [%d]", msg->header.seq);
@@ -39,10 +66,11 @@ void chatterCallback(const nav_msgs::Odometry::ConstPtr& msg)
 	geometry_msgs::TransformStamped odom_trans;
 	geometry_msgs::Quaternion odom_quat;
 	odom_trans.header.stamp = current_time;
-	odom_trans.transform.translation.x = msg->pose.pose.position.x;
-  odom_trans.transform.translation.y = msg->pose.pose.position.y;
-  odom_trans.transform.translation.z = msg->pose.pose.position.z;
-	odom_quat = tf::createQuaternionMsgFromYaw(msg->pose.pose.orientation.z);
+	odom_trans.transform.translation.x = msg->pose.pose.position.x*ODO_TRANSLATION_SCALING;
+  odom_trans.transform.translation.y = msg->pose.pose.position.y*ODO_TRANSLATION_SCALING;
+  odom_trans.transform.translation.z = msg->pose.pose.position.z*ODO_TRANSLATION_SCALING;
+	//odom_quat = tf::createQuaternionMsgFromYaw((msg->pose.pose.orientation.z+ODO_ANGLE_SHIFT*M_PI/180)*ODO_ANGLE_SCALING);
+	odom_quat = tf::createQuaternionMsgFromYaw(0);
   odom_trans.transform.rotation = odom_quat;
 	
 	
@@ -100,7 +128,7 @@ int main(int argc, char **argv)
    * away the oldest ones.
    */
   ros::Subscriber sub = n.subscribe("odom", 1000, chatterCallback);
-
+	ros::Subscriber sub2 = n.subscribe("amcl_pose", 1000, chatterCallback2);
   /**
    * ros::spin() will enter a loop, pumping callbacks.  With this version, all
    * callbacks will be called from within this thread (the main one).  ros::spin()
