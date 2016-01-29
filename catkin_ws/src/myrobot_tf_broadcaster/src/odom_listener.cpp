@@ -46,9 +46,9 @@ void chatterCallback(const nav_msgs::Odometry::ConstPtr& msg)
   odom_trans.transform.rotation = odom_quat;
 	
 	
-	mySendTransform("map","base_link",odom_trans);
-	mySendTransform("map","front_laser_gui",odom_trans);
-	mySendTransform("map","/front_laser",odom_trans);
+	mySendTransform("odom_combined","base_link",odom_trans);
+	//mySendTransform("map","front_laser_gui",odom_trans);
+	//mySendTransform("map","/front_laser",odom_trans);
 /*
 	odom_trans.transform.translation.x = -msg->pose.pose.position.x;
   odom_trans.transform.translation.y = -msg->pose.pose.position.y;
@@ -57,7 +57,7 @@ void chatterCallback(const nav_msgs::Odometry::ConstPtr& msg)
   odom_trans.transform.rotation = odom_quat;
 */
 
-	mySendTransform("odom_combined","map",odom_trans);
+	//mySendTransform("odom_combined","map",odom_trans);
 	
 }
 int main(int argc, char **argv)

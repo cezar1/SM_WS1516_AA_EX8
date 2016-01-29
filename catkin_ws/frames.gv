@@ -1,4 +1,4 @@
 digraph G {
-"front_laser" -> "base_link"[label="Broadcaster: /odom_listener\nAverage rate: 59.389 Hz\nMost recent transform: 1453879304.664 \nBuffer length: 3.890 sec\n"];
-"map" -> "front_laser_gui"[label="Broadcaster: /odom_listener\nAverage rate: 19.796 Hz\nMost recent transform: 1453879304.664 \nBuffer length: 3.890 sec\n"];
+"odom_combined" -> "base_link"[label="Broadcaster: /odom_listener\nAverage rate: 19.728 Hz\nMost recent transform: 1453879148.582 \nBuffer length: 4.968 sec\n"];
+"base_link" -> "front_laser"[label="Broadcaster: /odom2map\nAverage rate: 10.127 Hz\nMost recent transform: 1453879148.693 \nBuffer length: 4.937 sec\n"];
 }

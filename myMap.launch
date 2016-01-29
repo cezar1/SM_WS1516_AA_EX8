@@ -5,7 +5,7 @@
 </rosparam>
 
 
-<node pkg="tf" type="static_transform_publisher" name="odom2map" args="0.0 0.0 0.0 0.0 0.0 0.0 /front_laser base_link 100 "/>
+<node pkg="tf" type="static_transform_publisher" name="odom2map" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link /front_laser 100 "/>
 
 
 <!-- Run the map server (section inside the launch file) -->
