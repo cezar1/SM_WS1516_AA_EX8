@@ -1,3 +1,4 @@
 bag/*
-catkin_ws/build/*
-catkin_ws/devel/*
+myVolksBot/build/*
+myVolksBot/install/*
+myVolksBot/devel/*
