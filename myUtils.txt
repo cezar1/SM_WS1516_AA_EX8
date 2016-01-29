@@ -1,0 +1,1 @@
+rosbag filter bag/2016-01-27-08-18-53.bag turtlecom.bag "topic == /odom or topic == /LMS_lars"

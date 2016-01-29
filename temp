@@ -19,3 +19,6 @@
 <node pkg="tf" type="static_transform_publisher" name="base_link2map1" args="0.0 0.0 0.0 0.0 0.0 0.0 map base_link 100"/>
 <node pkg="tf" type="static_transform_publisher" name="map2odom_combined2map1" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link odom_combined 100"/>
 <node pkg="tf" type="static_transform_publisher" name="map2front_laser1" args="0.0 0.0 0.0 0.0 0.0 0.0 map front_laser 100"/>
+
+
+<include file="/home/cezar/mySW/SM_WS1516_AA_EX8/myAMCL.launch"/>
