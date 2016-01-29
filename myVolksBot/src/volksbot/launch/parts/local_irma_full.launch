@@ -1,0 +1,27 @@
+<launch>
+  <!-- Load the configuration file -->
+  <rosparam command="load" file="$(find volksbot)/launch/config/parameters.yaml" /> 
+
+  <!-- Load calibration components -->
+  <include file="$(find volksbot)/launch/parts/localcalibration_irma.launch" />
+
+  <!-- Essential volksbot stuff -->
+  <!-- Essential volksbot stuff -->
+  <node pkg="volksbot" name="volksbot" type="volksbot" />
+  <node pkg="volksbot" name="odometry" type="odometry" args="1"/>
+
+  <!-- Sensors -->
+ 	<!-- Irma IP .51 			-->
+  <node pkg="lms100" name="sick_front_irma" type="sicksensor" args="irma 51" output="screen"/>
+  
+  <!--  Logging for assembling/calibrating scans afterwards -->
+  <node pkg="rclock" type="timepublisher" name="timepublisher"/>
+
+ <node pkg="volksbot" name="joystick_control" type="jscontrol"/>
+
+
+  -->
+
+
+
+</launch>

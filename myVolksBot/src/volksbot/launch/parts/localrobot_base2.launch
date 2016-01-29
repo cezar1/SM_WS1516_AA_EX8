@@ -1,0 +1,27 @@
+<launch>
+  <!-- Load the configuration file -->
+  <rosparam command="load" file="$(find volksbot)/launch/config/parameters.yaml" /> 
+
+  <!-- Load calibration components -->
+  <include file="$(find volksbot)/launch/parts/localcalibration.launch" />
+
+  <!-- Essential volksbot stuff -->
+
+
+  <!-- Sensors -->
+  <node pkg="xsensRT" name="xsense" type="xsense" />
+ 	<!-- Irma IP .51 			-->
+  <node pkg="lms100" name="sick_front_irma" type="sicksensor" args="irma 51" output="screen"/>
+	<!-- Lars IP .9 			-->
+	<node pkg="lms100" name="sick_front_lars" type="sicksensor" args="lars 9" output="screen"/>
+	<!-- Achim IP .8 		-->
+	<node pkg="lms100" name="sick_front_achim" type="sicksensor" args="achim 8" output="screen"/>
+  <node pkg="riegl" name="rieglctr" type="ctr" respawn="true"/>
+  
+  <!--  Logging for assembling/calibrating scans afterwards -->
+  <node pkg="rclock" type="timepublisher" name="timepublisher"/>
+
+
+  -->
+
+</launch>

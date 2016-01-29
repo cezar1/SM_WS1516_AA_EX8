@@ -1,0 +1,16 @@
+#interface config (if wpa_supplicant manages IP, otherwise use GUI)
+sudo ifconfig -a wlan0 192.168.5.230 netmask 255.255.255.0 broadcast 192.168.5.255
+#ntp software
+sudo apt-get install ntp
+server  127.127.1.0 # local clock
+#inside /etc/ntp.conf
+restrict 192.168.5.0 mask 255.255.255.0 nomodify notrap
+service ntp stop
+service ntp start
+#on clients
+sudo ntpdate -u 192.168.5.230
+#to copy data to clients
+scp myTest.txt myPI@192.168.5.231:~
+#to set ros master
+export ROS_MASTER_URI=http://192.168.2.230:11311/
+export ROS_IP=192.168.2.231

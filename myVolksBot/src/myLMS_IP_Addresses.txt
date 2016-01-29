@@ -1,0 +1,11 @@
+
+Starting Nmap 5.21 ( http://nmap.org ) at 2015-12-02 19:24 CET
+Nmap scan report for 192.168.0.8
+Host is up (0.00036s latency).
+Nmap scan report for 192.168.0.9
+Host is up (0.00067s latency).
+Nmap scan report for 192.168.0.51
+Host is up (0.00049s latency).
+Nmap scan report for 192.168.0.248
+Host is up (0.00032s latency).
+Nmap done: 255 IP addresses (4 hosts up) scanned in 3.42 seconds

@@ -1,0 +1,12 @@
+<launch>
+  <!-- Load the configuration file -->
+  <rosparam command="load" file="$(find volksbot)/launch/config/parameters.yaml" /> 
+
+  <!-- Load calibration components -->
+  <include file="$(find volksbot)/launch/parts/localcalibration.launch" />
+
+  <!-- Essential volksbot stuff -->
+  <node pkg="volksbot" name="volksbot" type="volksbot" />
+  <node pkg="volksbot" name="odometry" type="odometry" />
+
+</launch>

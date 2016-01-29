@@ -1,4 +1,11 @@
 bag/*
+<<<<<<< Updated upstream
 myVolksBot/build/*
 myVolksBot/install/*
 myVolksBot/devel/*
+=======
+myVolksBot/devel/*
+myVolksBot/bin/*
+myVolksBot/install/*
+myVolksBot/build/*
+>>>>>>> Stashed changes

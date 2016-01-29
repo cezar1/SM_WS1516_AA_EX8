@@ -1,0 +1,8 @@
+sudo ifconfig -a wlan0 192.168.5.230 netmask 255.255.255.0 broadcast 192.168.5.255
+sudo apt-get install ntp
+service ntp start
+#inside the /etc/ntp.conf
+sudo ifconfig -a wlan0 192.168.5.230 netmask 255.255.255.0 broadcast 192.168.5.255
+restrict 192.168.5.0 mask 255.255.255.0 nomodify notrap
+#on the clients (231,232)
+sudo ntpdate -u 192.168.5.230
