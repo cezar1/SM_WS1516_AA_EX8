@@ -1,10 +1,5 @@
 <launch>
 <node pkg="amcl" type="amcl" name="amcl" output="screen">
-
-
-
-
-  <!-- Publish scans from best pose at a max of 10 Hz -->
   <param name="odom_model_type" value="omni"/>
   <param name="odom_alpha5" value="0.1"/>
   <param name="transform_tolerance" value="0.2" />
@@ -16,7 +11,6 @@
   <param name="kld_z" value="0.70"/>
   <param name="odom_alpha1" value="0.2"/>
   <param name="odom_alpha2" value="0.2"/>
-  <!-- translation std dev, m -->
   <param name="odom_alpha3" value="0.8"/>
   <param name="odom_alpha4" value="0.2"/>
   <param name="laser_z_hit" value="0.5"/>
@@ -27,7 +21,6 @@
   <param name="laser_lambda_short" value="0.1"/>
   <param name="laser_lambda_short" value="0.1"/>
   <param name="laser_max_range" value="20"/>
-
   <param name="laser_model_type" value="beams"/>
   <param name="laser_likelihood_max_dist" value="20.0"/>
   <param name="update_min_d" value="0.2"/>
@@ -36,16 +29,9 @@
   <param name="transform_tolerance" value="0.1"/>
   <param name="recovery_alpha_slow" value="0.01"/>
   <param name="recovery_alpha_fast" value="2"/>
-	#  newly added
-
 	<param name="base_frame_id" value="base_link"/>
 	<remap from="scan" to="LMS_irma"/>
 	<param name="odom_frame_id" value="odom_combined"/>
 	<param name="global_frame_id" value="map"/>
-	
-
-
-
-
 </node>
 </launch>

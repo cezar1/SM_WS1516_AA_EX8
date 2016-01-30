@@ -1,0 +1,5 @@
+digraph G {
+"base_link" -> "front_laser"[label="Broadcaster: /odom2map\nAverage rate: 20.252 Hz\nMost recent transform: 1454072816.837 \nBuffer length: 4.938 sec\n"];
+"odom_combined" -> "base_link"[label="Broadcaster: /play_1454187063974231640\nAverage rate: 20.046 Hz\nMost recent transform: 1454072816.766 \nBuffer length: 4.939 sec\n"];
+"map" -> "odom_combined"[label="Broadcaster: /amcl\nAverage rate: 10.209 Hz\nMost recent transform: 1454072816.838 \nBuffer length: 4.897 sec\n"];
+}
